@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>eMercado - Todo lo que busques está aquí</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        /*BOTON EDITAR FOTO*/
+        
+        .containerI {
+            position: relative;
+        }
+        
+        #editarI {
+            position: absolute;
+            bottom: 0px;
+            left: 141px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        /*ESTILOS MY PERFIL*/
+        /* Style the form */
+        
+        #regForm {
+            background-color: #ffffff;
+            margin: 20px auto;
+            padding: 20px;
+            width: 70%;
+            min-width: 300px;
+        }
+        /* Style the input fields */
+        
+        input {
+            padding: 10px;
+            width: 100%;
+            font-size: 17px;
+            font-family: Raleway;
+            border: 1px solid #aaaaaa;
+        }
+        /* Mark input boxes that gets an error on validation: */
+        
+        input.invalid {
+            background-color: #ffdddd;
+        }
+        /* Hide all steps by default: */
+        
+        .tab {
+            display: none;
+        }
+        
+        h2 {
+            max-width: 500px;
+            margin: 50px auto;
+            position: relative;
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 48px;
+            color: #1b42c0;
+            background: #1b42c0;
+            background: -moz-linear-gradient(left, #20c552 0%, #1b42c0 100%) !important;
+            background: -webkit-linear-gradient(left, #20c552 0%, #1b42c0 100%) !important;
+            background: linear-gradient(to right, #20c552 0%, #1b42c0 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+        
+        #nextBtn {
+            display: inline-block;
+            background-color: #000;
+            background-image: linear-gradient(125deg, #20c552 0%, #1b42c0);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 16px;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        #editar {
+            position: absolute;
+            right: 0px;
+            margin: 20px;
+        }
+        
+        .td {
+            color: #0b34bb;
+            font-family: Raleway;
+        }
+        
+        .table {
+            margin: 30px;
+        }
+        
+        #imgPerfil {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            width: 230px;
+        }
+    </style>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/dropzone.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="inicio.html">Inicio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="categories.html">Categorías <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sell.html">Vender</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nombreU" class="nav-link" href="cart.html">Mi carrito</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!--CONTEINER-->
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="containerI">
+                    <a href="https://imgbb.com/"><img id="imgPerfil" src="https://i.ibb.co/1v8n4W8/download.jpg" alt="download" border="0"></a>
+
+                    <!-- Modal editar imagen-->
+                    <button type="button" id="editarI" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter">
+                       Editar
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Edita imagen de perfil</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/action_page.php">
+                                        <input type="file" id="myFile" name="filename">
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary">Editar imagen</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <section class="get-in-touch">
+                        <h2 class="title">Mi perfil</h2>
+                        <!-- Modal editar datos-->
+                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </button>
+                                    <!--FORMULARIO VARIOS PASOS-->
+                                    <form id="regForm" action="">
+
+                                        <h2>Ingresa tus datos</h2>
+
+                                        <!-- One "tab" for each step in the form: -->
+                                        <div class="tab">Nombres:
+                                            <p><input id="1name" placeholder="Primer Nombre" oninput="this.className = ''"></p>
+                                            <p><input id="2name" placeholder="Segundo Nombre" oninput="this.className = ''"></p>
+                                        </div>
+
+                                        <div class="tab">Apellidos:
+                                            <p><input id="1apellido" placeholder="Primer Apellido" oninput="this.className = ''"></p>
+                                            <p><input id="2apellido" placeholder="Segundo Apellido" oninput="this.className = ''"></p>
+                                        </div>
+
+                                        <div class="tab">Edad:
+                                            <p><input id="edad" placeholder="Edad" oninput="this.className = ''"></p>
+                                        </div>
+
+                                        <div class="tab">Información de contacto:
+                                            <p><input id="email" placeholder="Correo electrónico..." oninput="this.className = ''"></p>
+                                            <p><input id="telefone" placeholder="Telefono..." oninput="this.className = ''"></p>
+                                        </div>
+                                        <div style="overflow:auto;">
+                                            <div style="float:right;">
+                                                <button class="btn btn-light" type="button" id="prevBtn" onclick="nextPrev(-1)">Atras</button>
+                                                <button class="btn btn-info" type="button" id="nextBtn" onclick="nextPrev(1)">Proximo</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Circles which indicates the steps of the form: -->
+                                        <div style="text-align:center;margin-top:40px;">
+                                            <span class="step"></span>
+                                            <span class="step"></span>
+                                            <span class="step"></span>
+                                            <span class="step"></span>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- EDITAR PERFIL Button trigger modal-->
+                        <button type="button" id="editar" class="btn btn-link btn-sm" data-toggle="modal" data-target="#staticBackdrop">
+                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square"
+                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd"
+                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                        </svg>
+                    </button>
+                        <br>
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td class="td" scope="col">Primer nombre</td>
+                                    <td class="td" scope="col">Segundo nombre</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col" id="1"></td>
+                                    <td scope="col" id="2"></td>
+                                </tr>
+                                <tr>
+                                    <td class="td" scope="col">Primer apellido</td>
+                                    <td class="td" scope="col">Segundo apellido</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col" id="3"></td>
+                                    <td scope="col" id="4"></td>
+                                </tr>
+                                <tr>
+                                    <td class="td" scope="col">Edad</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col" id="6"></td>
+                                </tr>
+                                <tr>
+                                    <td class="td" scope="col">Correo electrónico
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
+                                    </svg></td>
+                                    <td class="td" scope="col">Telefono
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone-outbound" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5z" />
+                                    </svg>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="col" id="5"></td>
+                                    <td scope="col" id="7"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="spinner-wrapper">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/my-profile.js"></script>
+</body>
+
+</html>

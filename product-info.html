@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>eMercado - Todo lo que busques está aquí</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        #user {
+            font-weight: bold;
+        }
+        
+        h2 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px
+        }
+        
+        .comentario__input {
+            width: 400px;
+            height: 100px;
+        }
+        
+        input[type="radio"] {
+            height: 18px;
+            width: 18px;
+            display: none;
+        }
+        
+        .clasificacion {
+            direction: rtl;
+            unicode-bidi: bidi-override;
+        }
+        
+        label:hover,
+        label:hover~label {
+            color: orange;
+        }
+        
+        input[type="radio"]:checked~label {
+            color: orange;
+        }
+        /*Funtion showComments */
+        
+        .chip {
+            display: inline-block;
+            padding: 0 25px;
+            height: 50px;
+            font-size: 16px;
+            line-height: 50px;
+            border-radius: 25px;
+            background-color: #f1f1f1;
+        }
+        /*imagen de Comments */
+        
+        .chip img {
+            float: left;
+            margin: 0 10px 0 -25px;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+        /* Chat containers */
+        
+        .com {
+            border: 2px solid #dedede;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .miComentario {
+            border: 2px solid #dedede;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        /* Style time text */
+        
+        .time-right {
+            float: right;
+            color: #999;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="inicio.html">Inicio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="categories.html">Categorías <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sell.html">Vender</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nombreU" class="nav-link" href="cart.html">Mi carrito</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    </div>
+
+    <!--titulo-->
+    <main role="main">
+        <div class="container p-3">
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto">
+                    <div class="nombre">
+                        <h2 id="productName"> </h2>
+                    </div>
+                </div>
+                <div class="col col-lg-1">
+                </div>
+                <div class="col col-lg-1">
+                    <div class="costo">
+                        <h2 id="productCurrency"></h2>
+                    </div>
+                </div>
+                <div class="col col-lg-1">
+                    <div>
+                        <h2 id="productCost"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Acordion descripcion, stock, categoria-->
+        <div class="container-imagen-acordion p-3">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-3">
+                    <!--acordion detalles-stock-cateoria-->
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h4 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Descripcion
+                                  </button>
+                                </h4>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <dd>
+                                        <p id="productDescription"></p>
+                                    </dd>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h4 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Stock
+                                  </button>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <dd>
+                                        <p id="productCount"></p>
+                                    </dd>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h4 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Categoria
+                                  </button>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <dd>
+                                        <p id="productCategory"></p>
+                                    </dd>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--imagen carrucel-->
+                <div class="col-6">
+                    <div id="productImagesGallery"></div>
+                </div>
+            </div>
+
+            <dl>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <!--Comentarios-->
+        <div class="container p-3">
+            <h3>
+                <span>Comentarios</span>
+            </h3>
+            <br>
+
+            <dd>
+                <p id="comentarios" class="comentarios"></p>
+            </dd>
+
+            <br>
+            <dd>
+                <p id="miComentario" class="mi_comentario"></p>
+            </dd>
+            </dl>
+
+            <!--Agregar los nuevo comentario y puntuación.-->
+            <div>
+                <h3>Puntúa y comenta el producto</h3>
+                <div class="puntuaProd">
+                    <form>
+                        <p class="clasificacion" id="clasificacion">
+                            <input id="radio0" type="radio" name="estrellas" value="0">
+                            <label for="radio0">★</label>
+                            <input id="radio1" type="radio" name="estrellas" value="1">
+                            <label for="radio1">★</label>
+                            <input id="radio2" type="radio" name="estrellas" value="2">
+                            <label for="radio2">★</label>
+                            <input id="radio3" type="radio" name="estrellas" value="3">
+                            <label for="radio3">★</label>
+                            <input id="radio4" type="radio" name="estrellas" value="4">
+                            <label for="radio4">★</label>
+                        </p>
+                        <textarea id="comentario" class="comentario__input" name="question" type="text" placeholder="Escribe que te pareció..." title="Escribe una pregunta" maxlength="2000"></textarea>
+                    </form>
+                    <button type="button" class="btn btn-info" id="enviar">Enviar</button>
+                </div>
+                <div id="estrellas"></div>
+                <div class="comenta"></div>
+
+
+                <!--Productos relacionados-->
+                <br>
+                <dl>
+                    <dt>Productos relacionados</dt>
+
+                    <dd>
+                        <p id="relatedProducts"></p>
+                    </dd>
+                </dl>
+
+                <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
+            </div>
+
+    </main>
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">Volver arriba</a>
+            </p>
+            <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+            <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+        </div>
+    </footer>
+    <div id="spinner-wrapper">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/product-info.js"></script>
+</body>
+
+</html>

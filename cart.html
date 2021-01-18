@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>eMercado - Todo lo que busques está aquí</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <style>
+        /*Acordeon*/
+        
+        .mb-0 {
+            margin: 0px;
+        }
+        
+        th,
+        td {
+            padding: 20px;
+            text-align: left;
+        }
+        
+        img {
+            float: left;
+        }
+        /*Lista de productos a comprar*/
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /*boton fin compra*/
+        
+        #finCompra {
+            display: inline-block;
+            background-color: #000;
+            background-image: linear-gradient(125deg, #20c552 0%, #1b42c0);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 16px;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            margin: 30px;
+        }
+        
+        #precios {
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+            margin-left: 30%;
+        }
+        
+        .img-abitab,
+        .img-redpago {
+            float: none;
+        }
+    </style>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/dropzone.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="inicio.html">Inicio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="categories.html">Categorías <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sell.html">Vender</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nombreU" class="nav-link" href="cart.html">Mi carrito</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container p-4">
+        <h2>Articulos a comprar</h2>
+    </div>
+    <br>
+    <div class="container" id="articulos">
+        <div class="row justify-content-center"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Cantidad:</th>
+                    <th scope="col">Precio unidad:</th>
+                    <th scope="row">Sub total:</th>
+
+                </tr>
+            </thead>
+            <!--mostramos en html-->
+            <tbody id="container"></tbody>
+        </table>
+    </div>
+    <hr>
+    <!--ACORDION-->
+    <div class="mad">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-md-6">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Selecciona el tipo de envio
+              </button>
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="d-block my-3">
+                                    <div class="custom-control custom-radio">
+                                        <input id="premium" name="publicationType" type="radio" class="custom-control-input" checked="" requierd="" onclick="showSubTotal();">
+                                        <label class="custom-control-label" for="premium">Premium 2 a 5 días(15%)</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input id="express" name="publicationType" type="radio" class="custom-control-input" requierd="" onclick="showSubTotal();">
+                                        <label class="custom-control-label" for="express">Express 5 a 8 días(7%)</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input id="standard" name="publicationType" type="radio" class="custom-control-input" requierd="" onclick="showSubTotal();">
+                                        <label class="custom-control-label" for="standard">Standard 12 a 15 días(5%)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Completa datos de envio
+              </button>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <form action="/action_page.php" class="needs-validation" novalidate>
+                                    <div class="form-group">
+                                        <label for="pais">Pais:</label><br>
+                                        <input type="text" class="form-control" id="pais" placeholder="Ingresa pais" name="pais" required><br>
+                                        <div class="valid-feedback">Válido</div>
+                                        <div class="invalid-feedback">Por favor rellene este campo</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="localidad">Localidad:</label><br>
+                                        <input type="text" class="form-control" id="localidad" placeholder="Ingresa localidad" name="localidad" required><br>
+                                        <div class="valid-feedback">Válido</div>
+                                        <div class="invalid-feedback">Por favor rellene este campo</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="direccion">Calle:</label><br>
+                                        <input type="text" class="form-control" id="direccion" placeholder="Ingresa calle" name="direccion" required><br>
+                                        <div class="valid-feedback">Válido</div>
+                                        <div class="invalid-feedback">Por favor rellene este campo</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="esquina">Esquina:</label><br>
+                                        <input type="text" class="form-control" id="esquina" placeholder="Ingresa esquina" name="esquina" required><br>
+                                        <div class="valid-feedback">Válido</div>
+                                        <div class="invalid-feedback">Por favor rellene este campo</div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="numero">Numero:</label><br>
+                                        <input type="number" class="form-control" id="numero" placeholder="Ingresa numero" name="numero" required><br>
+                                        <div class="valid-feedback">Válido</div>
+                                        <div class="invalid-feedback">Por favor rellene este campo</div>
+                                    </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Seleccione forma de pago:
+              </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <!--EFECTIVO Button trigger modal -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#efctivo">
+    Efctivo
+</button>
+                                <!--EFECTIVO Modal -->
+                                <div class="modal fade" id="efctivo" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="needs-validation">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Selecciona forma de pago</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="inputEfectivo" action="/action_page.php">
+                                                        <div id="abit">
+                                                            <input type="radio" id="abitab" name="gender" required>
+                                                            <label for="male"><img class="img-abitab" src="img/abitab.jpg" width="110" height="80"></label><br>
+                                                        </div>
+                                                        <div id="red">
+                                                            <input type="radio" id="redPago" name="gender" required>
+                                                            <label for="female"><img class="img-redpago" src="img/redpago.png" width="140" height="140"></label><br>
+                                                        </div>
+                                                        <input type="radio" id="trato directo" name="gender" required>
+                                                        <label for="other">Trato directo</label>
+                                                        <button type="button" class="btn btn-info">Comprar</button>
+
+                                                    </form>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <strong>Esta mal</strong>
+                                                </div>
+                                                <div class="valid-feedback">
+                                                    <strong>Correcto!</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--CREDITO Button trigger modal -->
+                                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#tarjeta">
+    Tarjeta de credito
+</button>
+                                <!--CREDITO Modal -->
+                                <div class="modal fade" id="tarjeta" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Complete el formulario</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="#" class="credit-card-div">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+
+                                                            <div class="row ">
+                                                                <div class="col-md-12">
+                                                                    <input type="text" class="form-control" placeholder="Ingresa numero de tarjeta" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="row ">
+                                                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                    <span class="help-block text-muted small-font">Mes vencimiento</span>
+                                                                    <input type="text" class="form-control" placeholder="MM" />
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                    <span class="help-block text-muted small-font">Año vencimiento</span>
+                                                                    <input type="text" class="form-control" placeholder="YY" />
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                    <span class="help-block text-muted small-font">Cantidad cuotas</span>
+                                                                    <input type="number" name="quantity" min="0" class="form-control" />
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                                                    <img src="img/tarjeta.jpg" width="60" height="60">
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                            <div class="row ">
+                                                                <div class="col-md-12 pad-adjust">
+
+                                                                    <input type="text" class="form-control" placeholder="Name On The Card" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12 pad-adjust">
+                                                                    <div class="checkbox">
+                                                                        <label>
+                                            <input type="checkbox" checked class="text-muted">Guardar detalles</a>
+                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <button type="button" class="btn btn-info">Comprar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--DEPOSITO Button trigger modal -->
+                                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#deposito">
+    Deposito bancario
+</button>
+
+                                <!--DEPOSITO Modal -->
+                                <div class="modal fade" id="deposito" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Complete el formulario</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row ">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control" placeholder="Ingresa numero de cuenta" />
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="row ">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control" placeholder="Nombre beneficiario" />
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="row ">
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" placeholder="Banco" />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" class="form-control" placeholder="Sucursal" />
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="row ">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control" placeholder="Concepto" />
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="row ">
+                                                    <div class="col-md-12">
+                                                        <input type="number" name="quantity" min="0" class="form-control" placeholder="Cantidad a depositar" />
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                    <button type="button" class="btn btn-info">Comprar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <table>
+                    <tbody id="precios">
+                        <tr>
+                            <th scope="row">Sub total</th>
+                            <th id="subTotal" onchange="showSubTotal"></th>
+                        </tr>
+                        <tr>
+                            <th scope="row">Precio envio:</th>
+                            <th scope="col" id="precioEnvio"></th>
+                        </tr>
+                        <tr>
+                            <th scope="row">Precio total</th>
+                            <th scope="col" id="precioTotal"></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <hr>
+    <br>
+    <div class="form-field col-lg-11">
+        <button type="button" class="btn btn-primary btn-lg btn-block" value="Submit" id="finCompra">Filalizar compra</button>
+    </div>
+    <div id="spinner-wrapper">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+
+</html>
